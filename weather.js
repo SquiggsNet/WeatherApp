@@ -1,94 +1,3 @@
-// var person = {
-//     firstName:"John",
-//     lastName:"Doe",
-//     age:50,
-//     eyeColor:"blue",
-//     fullName: function(){
-//         return this.firstName + " " +this.lastName;
-//     }
-// }
-
-// var person = new Object();
-// person.firstName = "John";
-// person.lastName = "Doe";
-// person.age = 50;
-// person.eyeColor = "blue";
-
-// console.log('Person ' + person.fullName());
-
-// function Person(first, last, age, eye) {
-//     this.firstName = first;
-//     this.lastName = last;
-//     this.age = age;
-//     this.eyeColor = eye;
-//     this.fullName = function(){
-//         return this.firstName + " " + this.lastName;
-//     }
-// }
-// var myFather = new Person("John", "Doe", 50, "blue");
-// myFather.nationality = "Canadian";
-// Person.prototype.nationality = "Canadian";
-// var myMother = new Person("Sally", "Rally", 48, "green");
-// Person.prototype.surName = function() {
-//     return this.firstName + " " + this.lastName;
-// };
-
-// console.log('Father\'s eyer color: ' + myFather.eyeColor);
-// console.log('Mother\'s age: ' + myMother.fullName());
-
-// function test(){
-    // for(key in myMother){
-    //     console.log('The type of ' + key + ' is ' + typeof(myMother[key]));
-    //     console.log('Value of ' + key + ' is ' + myMother[key]);
-    // }
-
-    // debugger;
-
-    // console.log('My father\'s Nationality is ' + myFather.nationality);
-    // console.log('My Mother\'s Nationality is ' + myMother.nationality);
-
-//     console.log('My father\'s full name is ' + myFather.surName());
-//     console.log('My Mother\'s full name is ' + myMother.surName());
-// }
-
-// test();
-
-// var x = function (a, b) {return a * b};
-// var z = x(4, 3);
-
-// console.log(z);
-
-// console.log(myFunction(5));
-
-// function myFunction(y) {
-//     return y * y;
-// }
-
-// function plus(a, b){
-//     if (arguments.length == 2 && typeof(a) == 'number' && typeof(b) == 'number'){
-//         return a+b;
-//     }else{
-//         return "Invalid";
-//     }
-// }
-
-// console.log(plus(2,2));
-// console.log(plus('2','2'));
-// console.log(plus());
-// console.log(plus(3));
-
-var add = (function () {
-    var counter = 0;
-    return function () {return counter += 1;}
-})();
-
-add();
-add();
-add();
-
-
-console.log(add());
-
 function displayWeather() {
     var city = document.getElementById("city");
     var state = document.getElementById("state");
@@ -105,7 +14,7 @@ function displayWeather() {
         return;
     }
 
-    city=city.state;
+    city=city.value;
     state=state.value
 
     var xhttp = new XMLHttpRequest();
@@ -117,7 +26,6 @@ function displayWeather() {
     };
     xhttp.onload = function() {
         if (this.status == 200) {
-			console.log(this.response);
             loadData(this);
         }
     };
@@ -139,7 +47,7 @@ function loadData(response) {
         alert('Invalid response from server.');
         return;
     }
-    var forecasts = xmlDoc.getElementsByTagName("forecast");
+    var forecasts = xmlDoc.getElementsByTagName("yweather:forecast");
     if (forecasts.length == 0) {
         alert("No Weather Data.");
     }
